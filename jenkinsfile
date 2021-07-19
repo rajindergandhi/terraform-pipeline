@@ -4,7 +4,7 @@ pipeline {
  stages {
  stage(‘checkout’) {
  steps {
- git branch: ‘develop’, url: ‘git@your url’
+ git credentialsId: 'jenkingit', url: 'https://github.com/rajindergandhi/terraform-pipeline.git'
  
  }
  }
@@ -28,7 +28,6 @@ pipeline {
  sh ‘terraform init’
  sh ‘terraform plan -out=plan’
  // sh ‘terraform destroy -auto-approve’
- sh ‘terraform apply plan’
  }
  
   }
