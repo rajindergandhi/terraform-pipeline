@@ -12,5 +12,6 @@ variable "instance_count" {
 
 variable "web_instance_type" {
    description = "instance type"
+   default = t2.micro
 }
 

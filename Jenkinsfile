@@ -78,7 +78,7 @@ pipeline {
 									]])
 								{
 								try {
-									tfCmd('plan', '-detailed-exitcode -out=tfplan')
+									tfCmd('plan', '-var="instance_count=1"')
 								} catch (ex) {
 									if (ex == 2 && "${ACTION}" == 'apply') {
 										currentBuild.result = "UNSTABLE"
