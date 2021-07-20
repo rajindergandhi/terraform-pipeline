@@ -9,7 +9,7 @@ pipeline {
 		AWS_DEFAULT_REGION = "${params.AWS_REGION}"
 		PROFILE = "${params.PROFILE}"
 		ACTION = "${params.ACTION}"
-		INSTANCE_COUNT = "${params.instance_count}"
+		INSTANCE_COUNT = "${params.INSTANCE_COUNT}"
 		PROJECT_DIR = "terraform"
   }
 	
