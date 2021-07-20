@@ -9,6 +9,7 @@ pipeline {
 		AWS_DEFAULT_REGION = "${params.AWS_REGION}"
 		PROFILE = "${params.PROFILE}"
 		ACTION = "${params.ACTION}"
+		INSTANCE_COUNT = "${params.instance_count}"
 		PROJECT_DIR = "terraform"
   }
 	
@@ -17,9 +18,8 @@ pipeline {
 		choice (name: 'AWS_REGION',
 				choices: ['eu-central-1','us-west-1', 'us-west-2'],
 				description: 'Pick A regions defaults to eu-central-1')
-		string (name: 'ENV_NAME',
-			   defaultValue: 'tf-customer1',
-			   description: 'Env or Customer name')
+		string (name: 'INSTANCE_COUNT',
+			    description: 'No of Instance')
 		choice (name: 'ACTION',
 				choices: [ 'plan', 'apply', 'destroy'],
 				description: 'Run terraform plan / apply / destroy')
@@ -78,7 +78,7 @@ pipeline {
 									]])
 								{
 								try {
-									tfCmd('plan', '-var="instance_count=2"')
+									tfCmd('plan', '-var="instance_count=$INSTANCE_COUNT')
 								} catch (ex) {
 									if (ex == 2 && "${ACTION}" == 'apply') {
 										currentBuild.result = "UNSTABLE"
