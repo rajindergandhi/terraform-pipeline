@@ -78,7 +78,7 @@ pipeline {
 									]])
 								{
 								try {
-									tfCmd('plan', '-var="instance_count=$INSTANCE_COUNT')
+									tfCmd('plan', '-var="instance_count=$INSTANCE_COUNT"')
 								} catch (ex) {
 									if (ex == 2 && "${ACTION}" == 'apply') {
 										currentBuild.result = "UNSTABLE"
