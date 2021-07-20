@@ -10,8 +10,3 @@ variable "instance_count" {
   description = "Number of instance"
 }
 
-variable "web_instance_type" {
-   description = "instance type"
-   default = t2.micro
-}
-
